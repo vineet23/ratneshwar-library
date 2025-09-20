@@ -208,8 +208,8 @@ export default function Home() {
     }
 
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener("click", function (e) {
-        const targetId = (this as HTMLAnchorElement).getAttribute("href");
+      anchor.addEventListener("click", (e) => {
+        const targetId = (anchor as HTMLAnchorElement).getAttribute("href");
         if (targetId && document.querySelector(targetId)) {
           e.preventDefault();
           document.querySelector(targetId)?.scrollIntoView({ behavior: "smooth" });
