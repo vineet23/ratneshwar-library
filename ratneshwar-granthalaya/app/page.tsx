@@ -158,29 +158,31 @@ export default function Home() {
     ];
 
     function updateLanguage(lang: string) {
-      document.documentElement.lang = lang;
+      const safeLang = (lang === 'en' || lang === 'mr') ? lang : 'mr';
+
+      document.documentElement.lang = safeLang;
       document.title =
-        lang === "mr"
+        safeLang === "mr"
           ? "श्री रत्नेश्वर ग्रंथालय | एक नवीन अध्याय"
           : "Shri Ratneshwar Granthalaya | A New Chapter";
 
       const elements = document.querySelectorAll<HTMLElement>("[data-lang]");
       elements.forEach((el) => {
-        const key = el.getAttribute("data-lang") as keyof (typeof translations)[typeof lang];
-        if (translations[lang as "en" | "mr"][key]) {
-          el.innerHTML = translations[lang as "en" | "mr"][key];
+        const key = el.getAttribute("data-lang") as keyof typeof translations.en;
+        if (key && translations[safeLang] && key in translations[safeLang]) {
+          el.innerHTML = translations[safeLang][key as keyof typeof translations.en];
         }
       });
 
       langButtons.forEach((btn) => {
-        if (btn && btn.id.includes(lang)) {
+        if (btn && btn.id.includes(safeLang)) {
           btn.classList.add("active");
         } else if (btn) {
           btn.classList.remove("active");
         }
       });
 
-      localStorage.setItem("preferredLanguage", lang);
+      localStorage.setItem("preferredLanguage", safeLang);
     }
 
     langButtons.forEach((button) => {
