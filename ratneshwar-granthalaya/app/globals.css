@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: var(--font-inter), var(--font-noto-sans-devanagari), sans-serif;
+    background-color: #f8f9fa;
+    color: #1f1f1f;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.17, 0.55, 0.55, 1), transform 0.8s cubic-bezier(0.17, 0.55, 0.55, 1);
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-text-glow {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+header {
+    background-color: rgba(248, 249, 250, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.section-headline {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+}
+
+.section-subheadline {
+    font-size: clamp(1.1rem, 2vw, 1.25rem);
+    line-height: 1.6;
+    color: #5f6368;
+}
+
+.lang-btn.active {
+    font-weight: bold;
+    color: #2563eb; /* blue-600 */
+    cursor: default;
+}
+
+.content-prose {
+    line-height: 1.8;
+    color: #3c4043;
+}
+
+.content-prose h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #1f1f1f;
+}
+
+.content-prose blockquote {
+    border-left: 4px solid #4285F4;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #5f6368;
+}
